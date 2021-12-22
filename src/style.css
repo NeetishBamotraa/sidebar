@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 
-:root{
+:root {
   --bluecolor: #6b00fd;
 }
 
@@ -159,7 +159,6 @@ body {
   color: grey;
 }
 
-
 .navbar-bar {
   position: relative;
   font-size: 40px;
@@ -179,8 +178,7 @@ body {
 
 .navbar-user-continer {
   margin-left: 10px;
-  max-width: 200px;
-  width: 20vw;
+  width: 200px;
   height: 6vh;
   display: flex;
   justify-content: space-evenly;
@@ -194,12 +192,12 @@ body {
   border-radius: 10px;
 }
 
-.user-data h3{
- color: white;
- margin-top: 2px;
- margin-bottom: 0;
+.user-data h3 {
+  color: white;
+  margin-top: 2px;
+  margin-bottom: 0;
 }
 
-.user-data div{
- color: var(--bluecolor);
+.user-data div {
+  color: var(--bluecolor);
 }
