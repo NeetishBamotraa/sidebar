@@ -24,7 +24,7 @@ const menudata = [
 
 export default function App() {
   const [ddState, setDDState] = useState('Gamer');
-  const [secSDcss, setsecSDcss] = useState(['sec-sidebar show-sec', 'emp']);
+  const [secSDcss, setsecSDcss] = useState(['sec-sidebar hide-sec', 'emp']);
   function handleMenuClick(e) {
     setsecSDcss(['sec-sidebar hide-sec', 'emp']);
     setDDState(e.domEvent.target.innerText);
@@ -42,7 +42,17 @@ export default function App() {
     </Menu>
   );
 
-  const handleMSidebarBtn = (data) => {
+  const handleMSidebarBtn = (data, keyV) => {
+    let sidebar = document.getElementsByClassName('sidebar-items');
+    for (let i = 0; i < sidebar.length; i++) {
+      if (i === keyV && sidebar[i].classList.contains('sidebar-items-active')) {
+        sidebar[i].classList.remove('sidebar-items-active');
+      } else if (i === keyV) {
+        sidebar[i].classList.add('sidebar-items-active');
+      } else {
+        sidebar[i].classList.remove('sidebar-items-active');
+      }
+    }
     if (secSDcss[1] === 'emp') {
       setsecSDcss(['sec-sidebar show-sec', data]);
     } else if (secSDcss[1] === data) {
@@ -96,11 +106,13 @@ export default function App() {
           <div className="navbar-bar">|</div>
           <div className="navbar-user-continer">
             <div className="user-img"></div>
-            <div className='user-data'>
+            <div className="user-data">
               <h3>User Name</h3>
               <div>other data</div>
             </div>
-            <div><DownSquareOutlined /></div>
+            <div>
+              <DownSquareOutlined />
+            </div>
           </div>
         </div>
       </div>
@@ -115,7 +127,7 @@ export default function App() {
             <div
               className="sidebar-items"
               key={keyV}
-              onClick={() => handleMSidebarBtn(data[1])}
+              onClick={() => handleMSidebarBtn(data[1], keyV)}
             >
               <span className="sidebar-items-img">{data[0]}</span>
               <span className="sidebar-items-text">{data[1]}</span>
