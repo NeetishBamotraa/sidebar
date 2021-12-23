@@ -1,12 +1,29 @@
-import { HomeOutlined } from '@ant-design/icons';
+import { HomeOutlined, UserSwitchOutlined } from '@ant-design/icons';
+import ListAltIcon from '@mui/icons-material/ListAlt';
+import ViewListIcon from '@mui/icons-material/ViewList';
+import PaidIcon from '@mui/icons-material/Paid';
+import AnalyticsIcon from '@mui/icons-material/Analytics';
+import MilitaryTechIcon from '@mui/icons-material/MilitaryTech';
+import GroupIcon from '@mui/icons-material/Group';
+import ForumIcon from '@mui/icons-material/Forum';
+import CircleNotificationsIcon from '@mui/icons-material/CircleNotifications';
+import ChatIcon from '@mui/icons-material/Chat';
+import HomeRepairServiceIcon from '@mui/icons-material/HomeRepairService';
+import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
+import LocalLibraryIcon from '@mui/icons-material/LocalLibrary';
+import EmojiPeopleIcon from '@mui/icons-material/EmojiPeople';
+import SportsScoreIcon from '@mui/icons-material/SportsScore';
+import AddBoxIcon from '@mui/icons-material/AddBox';
+import EscalatorIcon from '@mui/icons-material/Escalator';
+import Inventory2Icon from '@mui/icons-material/Inventory2';
 import React from 'react';
 
 const dashboardData = {
   Gamer: {
     Level1: [
       [
-        <HomeOutlined />,
-        'Dashboard',
+        <ListAltIcon />,
+        'Match List',
         [
           [
             'dash-l1-val1',
@@ -25,21 +42,37 @@ const dashboardData = {
           ['dash-l1-val2', []],
         ],
       ],
-      [<HomeOutlined />, 'Gamer'],
-      [<HomeOutlined />, 'Cricket'],
-      [<HomeOutlined />, 'Gamers'],
-      [<HomeOutlined />, 'Dice'],
-      [<HomeOutlined />, 'Cricket'],
+      [<ViewListIcon />, 'My Matches'],
+      [<PaidIcon />, 'Wallet & Payments'],
+      [<Inventory2Icon />, 'My Vault'],
+      [<AnalyticsIcon />, 'Data Analysis'],
+      [<MilitaryTechIcon />, 'LeaderBoards'],
+      [<GroupIcon />, 'Friendlist'],
+      [<ForumIcon />, 'Group Chat'],
+      [<CircleNotificationsIcon />, 'Notifications'],
+      [<UserSwitchOutlined />, 'Past Organizers'],
+      [<EscalatorIcon />, 'My Activity'],
+      [<ChatIcon />, 'Messages'],
+      [<HomeRepairServiceIcon />, 'My Service Providers'],
+      [<EmojiEventsIcon />, 'My Prizes'],
+      [<LocalLibraryIcon />, 'Communitys'],
     ],
   },
   Organizer: {
     Level1: [
-      [<HomeOutlined />, 'Dashboard'],
-      [<HomeOutlined />, 'Organizer'],
-      [<HomeOutlined />, 'Cricket'],
-      [<HomeOutlined />, 'Gamers'],
-      [<HomeOutlined />, 'Organizer'],
-      [<HomeOutlined />, 'Cricket'],
+      [<ViewListIcon />, 'My Matches'],
+      [<AddBoxIcon />, 'Organize New Match'],
+      [<Inventory2Icon />, 'My Vault'],
+      [<MilitaryTechIcon />, 'LeaderBoards'],
+      [<PaidIcon />, 'Wallet & Payments'],
+      [<AnalyticsIcon />, 'Data Analysis'],
+      [<EmojiPeopleIcon />, 'Past Players'],
+      [<EscalatorIcon />, 'My Activity'],
+      [<CircleNotificationsIcon />, 'Notifications'],
+      [<ForumIcon />, 'Chat Groups'],
+      [<HomeRepairServiceIcon />, 'My Service Providers'],
+      [<SportsScoreIcon />, 'My Scorers'],
+      [<LocalLibraryIcon />, 'Community'],
     ],
     Level2: [],
   },
