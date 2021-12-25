@@ -27,7 +27,7 @@ const menudata = [
 export default function App() {
   const [ddState, setDDState] = useState('Gamer');
   const [secSDcss, setsecSDcss] = useState(['sec-sidebar hide-sec', 'emp']);
-  const [theme, setTheme] = useState('light');
+  const [theme, setTheme] = useState('dark');
   function handleMenuClick(e) {
     setsecSDcss(['sec-sidebar hide-sec', 'emp']);
     setDDState(e.domEvent.target.innerText);
@@ -103,7 +103,14 @@ export default function App() {
         <div className="right-nav-header">
           <div>
             <Dropdown overlay={menu}>
-              <Button style={{backgroundColor: `${theme === 'dark' ? 'black' : 'rgb(65, 100, 240)'}`, color: 'white' }}>
+              <Button
+                style={{
+                  backgroundColor: `${
+                    theme === 'dark' ? 'black' : 'rgb(65, 100, 240)'
+                  }`,
+                  color: 'white',
+                }}
+              >
                 {ddState}
                 <DownOutlined />
               </Button>
