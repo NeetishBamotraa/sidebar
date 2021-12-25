@@ -10,6 +10,8 @@ import {
   BellOutlined,
   DownSquareOutlined,
 } from '@ant-design/icons';
+import Brightness7Icon from '@mui/icons-material/Brightness7';
+import Brightness4Icon from '@mui/icons-material/Brightness4';
 import dashboardData from './data.js';
 
 const menudata = [
@@ -25,17 +27,21 @@ const menudata = [
 export default function App() {
   const [ddState, setDDState] = useState('Gamer');
   const [secSDcss, setsecSDcss] = useState(['sec-sidebar hide-sec', 'emp']);
+  const [theme, setTheme] = useState('light');
   function handleMenuClick(e) {
     setsecSDcss(['sec-sidebar hide-sec', 'emp']);
     setDDState(e.domEvent.target.innerText);
   }
   const menu = (
     <Menu
-      style={{ backgroundColor: 'black', border: '1px solid white' }}
+      style={{
+        backgroundColor: `${theme === 'dark' ? 'grey' : 'rgb(59, 188, 240)'}`,
+        border: '1px solid white',
+      }}
       onClick={handleMenuClick}
     >
       {menudata.map((data, keyV) => (
-        <Menu.Item className="menuitems" key={keyV} icon={<UserOutlined />}>
+        <Menu.Item key={keyV} icon={<UserOutlined />}>
           {data}
         </Menu.Item>
       ))}
@@ -81,14 +87,23 @@ export default function App() {
     }
   };
 
+  const handleTheme = () => {
+    if (theme === 'dark') setTheme('light');
+    else setTheme('dark');
+  };
+
   return (
-    <div>
+    <div className={theme}>
       <div className="navbar">
-        <div></div>
+        <div className="left-nav-header">
+          <div onClick={handleTheme} className={`theme-logo-${theme}`}>
+            {theme === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
+          </div>
+        </div>
         <div className="right-nav-header">
           <div>
             <Dropdown overlay={menu}>
-              <Button style={{ backgroundColor: 'black', color: 'white' }}>
+              <Button style={{backgroundColor: `${theme === 'dark' ? 'black' : 'rgb(65, 100, 240)'}`, color: 'white' }}>
                 {ddState}
                 <DownOutlined />
               </Button>
