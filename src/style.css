@@ -6,7 +6,8 @@
 
 :root {
   --bluecolor: #6b00fd;
-  --sidebarwidth: 120px;
+  --sidebarlongwidth: 120px;
+  --sidebarshortwidth: 50px;
 }
 
 body {
@@ -16,8 +17,7 @@ body {
 
 .navbar {
   position: absolute;
-  left: var(--sidebarwidth);
-  width: calc(100vw - var(--sidebarwidth));
+  width: 100vw;
   height: 10vh;
   display: flex;
   justify-content: space-between;
@@ -41,6 +41,7 @@ body {
 .theme-logo-dark {
   transition-duration: 0.2s;
   display: flex;
+  margin-right: 20px;
 }
 
 .theme-logo-dark:hover {
@@ -54,6 +55,7 @@ body {
 .theme-logo-light {
   transition-duration: 0.2s;
   display: flex;
+  margin-right: 10px;
 }
 
 .theme-logo-light:hover {
@@ -73,9 +75,8 @@ body {
 
 .sidebar {
   position: absolute;
-  top: 0;
-  width: var(--sidebarwidth);
-  height: 100vh;
+  top: 10vh;
+  height: 90vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -83,6 +84,15 @@ body {
   overflow-y: auto;
   padding-bottom: 20px;
   scrollbar-width: thin;
+  transition-duration: 0.2s;
+}
+
+.sidebar-long {
+  width: var(--sidebarlongwidth);
+}
+
+.sidebar-short {
+  width: var(--sidebarshortwidth);
 }
 
 .dark .sidebar {
@@ -149,13 +159,20 @@ body {
 .sec-sidebar {
   position: absolute;
   top: 10vh;
-  left: var(--sidebarwidth);
   height: 90vh;
   background-color: rgb(48, 46, 46);
   transition-duration: 0.5s;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.sec-pri-sidebar-long {
+  left: var(--sidebarlongwidth);
+}
+
+.sec-pri-sidebar-short {
+  left: var(--sidebarshortwidth);
 }
 
 .hide-sec {

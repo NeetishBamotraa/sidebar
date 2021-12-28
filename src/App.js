@@ -26,8 +26,10 @@ const menudata = [
 
 export default function App() {
   const [ddState, setDDState] = useState('Gamer');
-  const [secSDcss, setsecSDcss] = useState(['sec-sidebar hide-sec', 'emp']);
+  const [secSDcss, setsecSDcss] = useState(['sec-sidebar show-sec', 'emp']);
   const [theme, setTheme] = useState('dark');
+  const [SDsize, setSDsize] = useState('long');
+
   function handleMenuClick(e) {
     setsecSDcss(['sec-sidebar hide-sec', 'emp']);
     setDDState(e.domEvent.target.innerText);
@@ -92,15 +94,21 @@ export default function App() {
     else setTheme('dark');
   };
 
+  const handlePrimarySize = (val) => {
+    setSDsize(val);
+  };
   return (
     <div className={theme}>
       <div className="navbar">
         <div className="left-nav-header">
-          <div onClick={handleTheme} className={`theme-logo-${theme}`}>
-            {theme === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
+          <div className="sidebar-logo">
+            <DingdingOutlined />
           </div>
         </div>
         <div className="right-nav-header">
+          <div onClick={handleTheme} className={`theme-logo-${theme}`}>
+            {theme === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
+          </div>
           <div>
             <Dropdown overlay={menu}>
               <Button
@@ -139,25 +147,31 @@ export default function App() {
         </div>
       </div>
 
-      <div className="sidebar">
-        <div className="sidebar-logo">
-          {' '}
-          <DingdingOutlined />
-        </div>
+      <div
+        onMouseEnter={() => handlePrimarySize('long')}
+        onMouseLeave={() => handlePrimarySize('short')}
+        className={`sidebar sidebar-${SDsize}`}
+      >
         {dashboardData[ddState] &&
           dashboardData[ddState]['Level1'].map((data, keyV) => (
             <div
               className="sidebar-items"
               key={keyV}
               onClick={() => handleMSidebarBtn(data[1], keyV)}
+              onMouseEnter={() => handleMSidebarBtn(data[1], keyV)}
             >
               <span className="sidebar-items-img">{data[0]}</span>
-              <span className="sidebar-items-text">{data[1]}</span>
+              {SDsize === 'long' && (
+                <span className="sidebar-items-text">{data[1]}</span>
+              )}
             </div>
           ))}
       </div>
 
-      <div className={secSDcss[0]}>
+      <div
+        onMouseEnter={() => handlePrimarySize('short')}
+        className={secSDcss[0] + ` sec-pri-sidebar-${SDsize}`}
+      >
         <div className="sec-level1">
           <div className="level1-title" onClick={(e) => handlelevel1(e)}>
             Level1
