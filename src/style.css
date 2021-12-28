@@ -119,6 +119,16 @@
   font-size: 8vh;
 }
 
+.sidebar-main-items {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  cursor: pointer;
+  transition-duration: 0.2s;
+}
+
 .sidebar-items {
   width: 90%;
   display: flex;
@@ -127,6 +137,10 @@
   margin-top: 20px;
   cursor: pointer;
   transition-duration: 0.2s;
+}
+
+.sidebar-items-l2{
+  width: ;
 }
 
 .dark .sidebar-items {

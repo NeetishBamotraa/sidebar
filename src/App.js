@@ -164,42 +164,27 @@ export default function App() {
       >
         {dashboardData[ddState] &&
           dashboardData[ddState]['Level1'].map((data, keyV) => (
-            // <div
-            //   className="sidebar-items"
-            //   key={keyV}
-            //   onClick={() => handleMSidebarBtn(data[1], keyV)}
-            //   onMouseEnter={() => handleMSidebarBtn(data[1], keyV)}
-            // >
-            //   <span className="sidebar-items-img">{data[0]}</span>
-            //   {SDsize === 'long' && (
-            //     <span className="sidebar-items-text">{data[1]}</span>
-            //   )}
-            // </div>
+            <div className="sidebar-main-items" key={keyV}>
+              <div className="sidebar-items">
+                <span className="sidebar-items-img">{data[0]}</span>
+                {SDsize === 'long' && (
+                  <span className="sidebar-items-text">{data[1]}</span>
+                )}
+              </div>
 
-            <div
-              className="sidebar-main-items"
-              key={keyV}
-              onClick={() => handleMSidebarOptionsBtn(data[1], keyV)}
-              onMouseEnter={() => handleMSidebarOptionsBtn(data[1], keyV)}
-            >
-              <span className="sidebar-items-img">{data[0]}</span>
-              {SDsize === 'long' && (
-                <span className="sidebar-items-text">{data[1]}</span>
-              )}
-
-              {data[2].map((data, keyV) => {
+              {data[2].map((newdata, newkeyV) => (
                 <div
                   className="sidebar-items"
-                  key={keyV}
-                  onClick={() => handleMSidebarBtn(data[1], keyV)}
-                  onMouseEnter={() => handleMSidebarBtn(data[1], keyV)}
+                  key={(keyV + newkeyV / 10).toString()}
+                  onClick={() => handleMSidebarBtn(newdata[1], newkeyV)}
+                  onMouseEnter={() => handleMSidebarBtn(newdata[1], newkeyV)}
                 >
-                  <span className="sidebar-items-img">{data[0]}</span>
+                  <span className="sidebar-items-img">{newdata[0]}</span>
                   {SDsize === 'long' && (
-                    <span className="sidebar-items-text">{data[1]}</span>
+                    <span className="sidebar-items-text">{newdata[1]}</span>
                   )}
-                </div>;
-              })}
+                </div>
+              ))}
             </div>
           ))}
       </div>
