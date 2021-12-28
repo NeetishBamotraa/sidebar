@@ -10,11 +10,6 @@
   --sidebarshortwidth: 50px;
 }
 
-body {
-  background-color: black;
-  color: white;
-}
-
 .navbar {
   position: absolute;
   width: 100vw;
@@ -28,7 +23,7 @@ body {
 }
 
 .light .navbar {
-  background-color: rgb(59, 188, 240);
+  background-color: whitesmoke;
 }
 
 .left-nav-header {
@@ -56,6 +51,7 @@ body {
   transition-duration: 0.2s;
   display: flex;
   margin-right: 10px;
+  color: orangered;
 }
 
 .theme-logo-light:hover {
@@ -84,7 +80,6 @@ body {
   overflow-y: auto;
   padding-bottom: 20px;
   scrollbar-width: thin;
-  transition-duration: 0.2s;
 }
 
 .sidebar-long {
@@ -100,14 +95,23 @@ body {
 }
 
 .light .sidebar {
-  background-color: rgb(158, 201, 218);
+  background-color: white;
 }
 
 .sidebar::-webkit-scrollbar {
   display: none;
 }
 
-.sidebar-logo {
+.sidebar-logo-light {
+  margin-top: 1vh;
+  width: 90%;
+  display: flex;
+  align-items: center;
+  font-size: 8vh;
+  color: black;
+}
+
+.sidebar-logo-dark {
   margin-top: 1vh;
   width: 90%;
   display: flex;
@@ -234,6 +238,13 @@ body {
   background-color: transparent;
   border: none;
   outline: none;
+}
+
+.nb-srh-in-light {
+  color: black;
+}
+
+.nb-srh-in-dark {
   color: white;
 }
 
@@ -275,12 +286,22 @@ body {
   border-radius: 10px;
 }
 
-.user-data h3 {
+.user-data-light h3 {
+  color: black;
+  margin-top: 2px;
+  margin-bottom: 0;
+}
+
+.user-data-dark h3 {
   color: white;
   margin-top: 2px;
   margin-bottom: 0;
 }
 
-.user-data div {
+.user-data-light div {
+  color: var(--bluecolor);
+}
+
+.user-data-dark div {
   color: var(--bluecolor);
 }

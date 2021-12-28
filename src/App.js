@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import 'antd/dist/antd.css';
 import './style.css';
 import { Menu, Dropdown, Button, Layout } from 'antd';
@@ -29,6 +29,12 @@ export default function App() {
   const [secSDcss, setsecSDcss] = useState(['sec-sidebar show-sec', 'emp']);
   const [theme, setTheme] = useState('dark');
   const [SDsize, setSDsize] = useState('long');
+
+  useEffect(() => {
+    let color = theme === 'light' ? 'white' : 'black';
+    document.body.style.backgroundColor = color;
+    document.body.style.color = 'white';
+  }, [theme]);
 
   function handleMenuClick(e) {
     setsecSDcss(['sec-sidebar hide-sec', 'emp']);
@@ -101,7 +107,7 @@ export default function App() {
     <div className={theme}>
       <div className="navbar">
         <div className="left-nav-header">
-          <div className="sidebar-logo">
+          <div className={`sidebar-logo-${theme}`}>
             <DingdingOutlined />
           </div>
         </div>
@@ -125,7 +131,11 @@ export default function App() {
             </Dropdown>
           </div>
           <div className="navbar-search">
-            <input type="text" placeholder="Search..." />
+            <input
+              className={`nb-srh-in-${theme}`}
+              type="text"
+              placeholder="Search..."
+            />
             <div className="navbar-search-button">
               <SearchOutlined />
             </div>
@@ -136,7 +146,7 @@ export default function App() {
           <div className="navbar-bar">|</div>
           <div className="navbar-user-continer">
             <div className="user-img"></div>
-            <div className="user-data">
+            <div className={`user-data-${theme}`}>
               <h3>User Name</h3>
               <div>other data</div>
             </div>
@@ -154,16 +164,42 @@ export default function App() {
       >
         {dashboardData[ddState] &&
           dashboardData[ddState]['Level1'].map((data, keyV) => (
+            // <div
+            //   className="sidebar-items"
+            //   key={keyV}
+            //   onClick={() => handleMSidebarBtn(data[1], keyV)}
+            //   onMouseEnter={() => handleMSidebarBtn(data[1], keyV)}
+            // >
+            //   <span className="sidebar-items-img">{data[0]}</span>
+            //   {SDsize === 'long' && (
+            //     <span className="sidebar-items-text">{data[1]}</span>
+            //   )}
+            // </div>
+
             <div
-              className="sidebar-items"
+              className="sidebar-main-items"
               key={keyV}
-              onClick={() => handleMSidebarBtn(data[1], keyV)}
-              onMouseEnter={() => handleMSidebarBtn(data[1], keyV)}
+              onClick={() => handleMSidebarOptionsBtn(data[1], keyV)}
+              onMouseEnter={() => handleMSidebarOptionsBtn(data[1], keyV)}
             >
               <span className="sidebar-items-img">{data[0]}</span>
               {SDsize === 'long' && (
                 <span className="sidebar-items-text">{data[1]}</span>
               )}
+
+              {data[2].map((data, keyV) => {
+                <div
+                  className="sidebar-items"
+                  key={keyV}
+                  onClick={() => handleMSidebarBtn(data[1], keyV)}
+                  onMouseEnter={() => handleMSidebarBtn(data[1], keyV)}
+                >
+                  <span className="sidebar-items-img">{data[0]}</span>
+                  {SDsize === 'long' && (
+                    <span className="sidebar-items-text">{data[1]}</span>
+                  )}
+                </div>;
+              })}
             </div>
           ))}
       </div>
