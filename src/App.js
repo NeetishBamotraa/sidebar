@@ -181,7 +181,7 @@ export default function App() {
           dashboardData[ddState]['Level1'].map((data, keyV) => (
             <div className="sidebar-main-items" key={keyV}>
               <div
-                onMouseEnter={() => handleCSidebar(keyV)}
+                onClick={() => handleCSidebar(keyV)}
                 className="sidebar-items"
               >
                 <span className="sidebar-items-img">{data[0]}</span>
