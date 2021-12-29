@@ -13,8 +13,8 @@ import {
 import Brightness7Icon from '@mui/icons-material/Brightness7';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import dashboardData from './data.js';
-
-import category from './category.js';
+import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 
 const menudata = [
   'Gamer',
@@ -187,6 +187,16 @@ export default function App() {
                 <span className="sidebar-items-img">{data[0]}</span>
                 {SDsize === 'long' && (
                   <span className="sidebar-items-text">{data[1]}</span>
+                )}
+                {SDsize === 'long' && keyV === subKey && (
+                  <span className="sidebar-items-arrow">
+                   <ArrowDropDownIcon/>
+                  </span>
+                )}
+                {SDsize === 'long' && keyV !== subKey && (
+                  <span className="sidebar-items-arrow">
+                    <ArrowLeftIcon />
+                  </span>
                 )}
               </div>
 
