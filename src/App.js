@@ -173,9 +173,9 @@ export default function App() {
       </div>
 
       <div
-        onMouseEnter={() => handlePrimarySize('long')}
-        onMouseLeave={() => handlePrimarySize('short')}
-        className={`sidebar sidebar-long`}
+        // onMouseEnter={() => handlePrimarySize('long')}
+        // onMouseLeave={() => handlePrimarySize('short')}
+        className={`sidebar sidebar-${SDsize}`}
       >
         {dashboardData[ddState] &&
           dashboardData[ddState]['Level1'].map((data, keyV) => (
@@ -190,7 +190,7 @@ export default function App() {
                 )}
                 {SDsize === 'long' && keyV === subKey && (
                   <span className="sidebar-items-arrow">
-                   <ArrowDropDownIcon/>
+                    <ArrowDropDownIcon />
                   </span>
                 )}
                 {SDsize === 'long' && keyV !== subKey && (
@@ -227,7 +227,7 @@ export default function App() {
       </div>
 
       <div
-        onMouseEnter={() => handlePrimarySize('short')}
+        // onMouseEnter={() => handlePrimarySize('short')}
         className={
           secSDcss[0] + ` sec-sidebar-${theme}` + ` sec-pri-sidebar-${SDsize}`
         }
