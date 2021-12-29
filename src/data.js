@@ -164,7 +164,18 @@ const dashboardData = {
         ],
       ],
     ],
-    Level2: [],
+    SecSide: {
+      'Organize New Match': [
+        [
+          'Has Entry Fee',
+          ['Single Match Format', 'Multi Match Format', 'Challenge'],
+        ],
+        [
+          'Free Entry',
+          ['Single Match Format', 'Multi Match Format', 'Challenge'],
+        ],
+      ],
+    },
   },
   'Team Owner': {
     Level1: [

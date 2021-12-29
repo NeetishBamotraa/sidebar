@@ -238,28 +238,13 @@ export default function App() {
           secSDcss[0] + ` sec-sidebar-${theme}` + ` sec-pri-sidebar-${SDsize}`
         }
       >
-        <div className="sec-level1">
-          <div className="level1-title" onClick={(e) => handlelevel1(e)}>
-            Level1
-          </div>
-          <div className={`sec-level2 hide`}>
-            <div className="level2-title">
-              <span onClick={(e) => handlelevel2(e)}>Level2</span>
-              <div className="sec-level3 hide">
-                <div className="level3-title">Level3</div>
-                <div className="level3-title">Level3</div>
-                <div className="level3-title">Level3</div>
-                <div className="level3-title">Level3</div>
-                <div className="level3-title">Level3</div>
-                <div className="level3-title">Level3</div>
-              </div>
+        {dashboardData[ddState]['SecSide'] &&
+          dashboardData[ddState]['SecSide'][secSDcss[1]] &&
+          dashboardData[ddState]['SecSide'][secSDcss[1]].map((data, keyV) => (
+            <div className="sec-level1" key={keyV}>
+              <div className="level1-title">{data[0]}</div>
             </div>
-            <div className="level2-title">Level2</div>
-            <div className="level2-title">Level2</div>
-            <div className="level2-title">Level2</div>
-            <div className="level2-title">Level2</div>
-          </div>
-        </div>
+          ))}
       </div>
     </div>
   );
