@@ -28,7 +28,7 @@ const menudata = [
 
 export default function App() {
   const [ddState, setDDState] = useState('Gamer');
-  const [secSDcss, setsecSDcss] = useState(['sec-sidebar show-sec', 'emp']);
+  const [secSDcss, setsecSDcss] = useState(['sec-sidebar hide-sec', 'emp']);
   const [theme, setTheme] = useState('dark');
   const [SDsize, setSDsize] = useState('long');
   const [subKey, setsubKey] = useState(0);
