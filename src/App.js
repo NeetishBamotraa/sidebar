@@ -5,7 +5,7 @@ import { Menu, Dropdown, Button, Layout } from 'antd';
 import {
   DownOutlined,
   UserOutlined,
-  DingdingOutlined,
+  AliyunOutlined,
   SearchOutlined,
   BellOutlined,
   DownSquareOutlined,
@@ -15,6 +15,8 @@ import Brightness4Icon from '@mui/icons-material/Brightness4';
 import dashboardData from './data.js';
 import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft';
+import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
 
 const menudata = [
   'Gamer',
@@ -109,8 +111,9 @@ export default function App() {
     else setTheme('dark');
   };
 
-  const handlePrimarySize = (val) => {
-    setSDsize(val);
+  const handlePrimarySize = () => {
+    if (SDsize === 'long') setSDsize('short');
+    else setSDsize('long');
   };
 
   const handleCSidebar = (keyV) => {
@@ -118,12 +121,13 @@ export default function App() {
       setsubKey(-1);
     } else setsubKey(keyV);
   };
+
   return (
     <div className={theme}>
       <div className="navbar">
         <div className="left-nav-header">
           <div className={`sidebar-logo-${theme}`}>
-            <DingdingOutlined />
+            <AliyunOutlined />
           </div>
         </div>
         <div className="right-nav-header">
@@ -172,6 +176,10 @@ export default function App() {
         </div>
       </div>
 
+      <div onClick={handlePrimarySize} className={`sidebar-arrow-${SDsize}`}>
+        {SDsize === 'long' ? <ArrowCircleLeftIcon /> : <ArrowCircleRightIcon />}
+      </div>
+
       <div
         // onMouseEnter={() => handlePrimarySize('long')}
         // onMouseLeave={() => handlePrimarySize('short')}
@@ -211,9 +219,7 @@ export default function App() {
                       //   handleMSidebarBtn(newdata[1], newdata[2])
                       // }
                     >
-                      <div className="sidebar-sub-items-img">
-                        {newdata[0]}
-                      </div>
+                      <div className="sidebar-sub-items-img">{newdata[0]}</div>
                       {SDsize === 'long' && (
                         <span className="sidebar-sub-items-text">
                           {newdata[1]}
