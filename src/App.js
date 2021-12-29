@@ -175,7 +175,7 @@ export default function App() {
       <div
         onMouseEnter={() => handlePrimarySize('long')}
         onMouseLeave={() => handlePrimarySize('short')}
-        className={`sidebar sidebar-${SDsize}`}
+        className={`sidebar sidebar-long`}
       >
         {dashboardData[ddState] &&
           dashboardData[ddState]['Level1'].map((data, keyV) => (
