@@ -14,6 +14,8 @@ import Brightness7Icon from '@mui/icons-material/Brightness7';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import dashboardData from './data.js';
 
+import category from './category.js';
+
 const menudata = [
   'Gamer',
   'Organizer',
@@ -29,6 +31,9 @@ export default function App() {
   const [secSDcss, setsecSDcss] = useState(['sec-sidebar show-sec', 'emp']);
   const [theme, setTheme] = useState('dark');
   const [SDsize, setSDsize] = useState('long');
+  const [subKey, setsubKey] = useState(-1);
+
+  let subkeyval = 0;
 
   useEffect(() => {
     let color = theme === 'light' ? 'white' : 'black';
@@ -57,14 +62,18 @@ export default function App() {
   );
 
   const handleMSidebarBtn = (data, keyV) => {
-    let sidebar = document.getElementsByClassName('sidebar-items');
+    let sidebar = document.getElementsByClassName('sidebar-sub-items');
+
     for (let i = 0; i < sidebar.length; i++) {
-      if (i === keyV && sidebar[i].classList.contains('sidebar-items-active')) {
-        sidebar[i].classList.remove('sidebar-items-active');
+      if (
+        i === keyV &&
+        sidebar[i].classList.contains('sidebar-sub-items-active')
+      ) {
+        sidebar[i].classList.remove('sidebar-sub-items-active');
       } else if (i === keyV) {
-        sidebar[i].classList.add('sidebar-items-active');
+        sidebar[i].classList.add('sidebar-sub-items-active');
       } else {
-        sidebar[i].classList.remove('sidebar-items-active');
+        sidebar[i].classList.remove('sidebar-sub-items-active');
       }
     }
     if (secSDcss[1] === 'emp') {
@@ -102,6 +111,12 @@ export default function App() {
 
   const handlePrimarySize = (val) => {
     setSDsize(val);
+  };
+
+  const handleCSidebar = (keyV) => {
+    if (keyV === subKey) {
+      setsubKey(-1);
+    } else setsubKey(keyV);
   };
   return (
     <div className={theme}>
@@ -165,33 +180,47 @@ export default function App() {
         {dashboardData[ddState] &&
           dashboardData[ddState]['Level1'].map((data, keyV) => (
             <div className="sidebar-main-items" key={keyV}>
-              <div className="sidebar-items">
+              <div
+                onMouseEnter={() => handleCSidebar(keyV)}
+                className="sidebar-items"
+              >
                 <span className="sidebar-items-img">{data[0]}</span>
                 {SDsize === 'long' && (
                   <span className="sidebar-items-text">{data[1]}</span>
                 )}
               </div>
 
-              {data[2].map((newdata, newkeyV) => (
-                <div
-                  className="sidebar-items"
-                  key={(keyV + newkeyV / 10).toString()}
-                  onClick={() => handleMSidebarBtn(newdata[1], newkeyV)}
-                  onMouseEnter={() => handleMSidebarBtn(newdata[1], newkeyV)}
-                >
-                  <span className="sidebar-items-img">{newdata[0]}</span>
-                  {SDsize === 'long' && (
-                    <span className="sidebar-items-text">{newdata[1]}</span>
-                  )}
-                </div>
-              ))}
+              {subKey === keyV &&
+                data[2].map((newdata) => {
+                  return (
+                    <div
+                      className="sidebar-sub-items"
+                      key={newdata[2]}
+                      onClick={() => handleMSidebarBtn(newdata[1], newdata[2])}
+                      // onMouseEnter={() =>
+                      //   handleMSidebarBtn(newdata[1], newdata[2])
+                      // }
+                    >
+                      <span className="sidebar-sub-items-img">
+                        {newdata[0]}
+                      </span>
+                      {SDsize === 'long' && (
+                        <span className="sidebar-sub-items-text">
+                          {newdata[1]}
+                        </span>
+                      )}
+                    </div>
+                  );
+                })}
             </div>
           ))}
       </div>
 
       <div
         onMouseEnter={() => handlePrimarySize('short')}
-        className={secSDcss[0] + ` sec-pri-sidebar-${SDsize}`}
+        className={
+          secSDcss[0] + ` sec-sidebar-${theme}` + ` sec-pri-sidebar-${SDsize}`
+        }
       >
         <div className="sec-level1">
           <div className="level1-title" onClick={(e) => handlelevel1(e)}>
