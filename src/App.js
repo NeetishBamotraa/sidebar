@@ -31,7 +31,7 @@ export default function App() {
   const [secSDcss, setsecSDcss] = useState(['sec-sidebar show-sec', 'emp']);
   const [theme, setTheme] = useState('dark');
   const [SDsize, setSDsize] = useState('long');
-  const [subKey, setsubKey] = useState(-1);
+  const [subKey, setsubKey] = useState(0);
 
   let subkeyval = 0;
 
@@ -211,9 +211,9 @@ export default function App() {
                       //   handleMSidebarBtn(newdata[1], newdata[2])
                       // }
                     >
-                      <span className="sidebar-sub-items-img">
+                      <div className="sidebar-sub-items-img">
                         {newdata[0]}
-                      </span>
+                      </div>
                       {SDsize === 'long' && (
                         <span className="sidebar-sub-items-text">
                           {newdata[1]}
