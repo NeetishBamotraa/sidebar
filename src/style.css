@@ -512,10 +512,10 @@
 
 .ct-final {
   margin-top: 20px;
-  width: 100%;
+  width: 15%;
   padding: 10px;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
 }
 
 .right-sidebar {
@@ -524,5 +524,5 @@
   right: 0;
   width: 10vw;
   height: 90vh;
-  border: 1px solid red;
+  background-color: rgb(48, 46, 46);
 }

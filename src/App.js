@@ -52,6 +52,7 @@ export default function App() {
     let val2 = SDsize === 'long';
     let val3 = rtState[0];
     if (val3) {
+      setSDsize('short');
       if (val1) {
         if (val2) {
           setctwdT('psl-sss-rt');
