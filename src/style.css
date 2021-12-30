@@ -6,7 +6,7 @@
 
 :root {
   --bluecolor: #6b00fd;
-  --sidebarlongwidth: 200px;
+  --sidebarlongwidth: 220px;
   --sidebarshortwidth: 50px;
 }
 
@@ -393,14 +393,14 @@
   padding: 5px 0;
 }
 
-.theme-ar:hover{
+.theme-ar:hover {
   background-color: rgb(66, 69, 70);
 }
 
 .sd-last .role {
   display: flex;
   width: 100%;
- justify-content: space-between;
+  justify-content: space-between;
   align-items: center;
   border-top: 1px solid grey;
   padding: 5px 0;
