@@ -55,7 +55,9 @@ export default function ContentArea({
           </div>
         </div>
       ) : (
-        <h1>Work in Progress</h1>
+        <h1 style={{ color: `${theme === 'dark' ? 'white' : 'black'}` }}>
+          Work in Progress
+        </h1>
       )}
     </div>
   );
