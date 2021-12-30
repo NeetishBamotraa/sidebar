@@ -106,6 +106,8 @@ export default function App() {
       setsubKey([-1, false]);
       setsubKey([keyV, true]);
     }
+
+    setsecSDcss(['sec-sidebar hide-sec', 'emp']);
   };
 
   const handleSecL1 = (val) => {
