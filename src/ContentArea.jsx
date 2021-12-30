@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './style.css';
+import img1 from './images';
 
 var games = ['BGMI', 'PUBG-Global', 'PUBG-Korean', 'PUBG-Mobile'];
 
@@ -29,31 +30,32 @@ export default function ContentArea({
       priOpt === 'Organize New Match' &&
       secOptl1 === 'Has Entry Fee' &&
       secOptl2 === 'Single Match Format' ? ( */}
-        <div>
-          <div className="ct-main-header">Select Your Game :</div>
-          <div className="ct-sec-header">Available Games</div>
-          <div className="ct-card-container">
-            {games.map((data) => (
-              <div
-                key={data}
-                onClick={() => gameSelect(data)}
-                className={`ct-card bg-blue ${
-                  gameCur === data && 'ct-card-active'
-                }`}
-              >
-                {data}
-              </div>
-            ))}
+      <div>
+        <div className="ct-main-header">Select Your Game :</div>
+        <div className="ct-sec-header">Available Games</div>
+        <div className="ct-card-container">
+          {games.map((data) => (
+            <div
+              key={data}
+              onClick={() => gameSelect(data)}
+              style={{ backgroundImage: img1 }}
+              className={`ct-card bg-blue ${
+                gameCur === data && 'ct-card-active'
+              }`}
+            >
+              {data}
+            </div>
+          ))}
+        </div>
+        <div className="ct-final">
+          <div onClick={() => confirmGame()} className="ct-cardop bg-red">
+            Confirm
           </div>
-          <div className="ct-final">
-            <div onClick={() => confirmGame()} className="ct-cardop bg-red">
-              Confirm
-            </div>
-            <div onClick={() => cancelGame()} className="ct-cardop bg-grey">
-              Cancel
-            </div>
+          <div onClick={() => cancelGame()} className="ct-cardop bg-grey">
+            Cancel
           </div>
         </div>
+      </div>
       {/* // ) : (
       //   <h1 style={{ color: `${theme === 'dark' ? 'white' : 'black'}` }}>
       //     Work in Progress
