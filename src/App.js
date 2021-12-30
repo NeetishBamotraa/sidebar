@@ -14,6 +14,7 @@ import Brightness7Icon from '@mui/icons-material/Brightness7';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import dashboardData from './data.js';
 import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
+import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft';
 import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
@@ -29,13 +30,12 @@ const menudata = [
 ];
 
 export default function App() {
-  const [ddState, setDDState] = useState('Gamer');
-  const [secSDcss, setsecSDcss] = useState(['sec-sidebar hide-sec', 'emp']);
+  const [ddState, setDDState] = useState('Organizer');
+  const [secSDcss, setsecSDcss] = useState(['sec-sidebar show-sec', 'emp']);
   const [theme, setTheme] = useState('dark');
   const [SDsize, setSDsize] = useState('long');
   const [subKey, setsubKey] = useState(0);
-
-  let subkeyval = 0;
+  const [secDataState, setsecDataState] = useState(['level1']);
 
   useEffect(() => {
     let color = theme === 'light' ? 'white' : 'black';
@@ -88,24 +88,6 @@ export default function App() {
     }
   };
 
-  const handlelevel1 = (e) => {
-    let ele = e.target.parentElement.childNodes[1].classList;
-    if (ele.contains('hide')) {
-      ele.remove('hide');
-    } else {
-      ele.add('hide');
-    }
-  };
-
-  const handlelevel2 = (e) => {
-    let ele = e.target.parentElement.childNodes[1].classList;
-    if (ele.contains('hide')) {
-      ele.remove('hide');
-    } else {
-      ele.add('hide');
-    }
-  };
-
   const handleTheme = () => {
     if (theme === 'dark') setTheme('light');
     else setTheme('dark');
@@ -120,6 +102,11 @@ export default function App() {
     if (keyV === subKey) {
       setsubKey(-1);
     } else setsubKey(keyV);
+  };
+
+  const handleSecL1 = (val) => {
+    if (secDataState[0] === val) setsecDataState(['level1']);
+    else setsecDataState([val]);
   };
 
   return (
@@ -240,11 +227,35 @@ export default function App() {
       >
         {dashboardData[ddState]['SecSide'] &&
           dashboardData[ddState]['SecSide'][secSDcss[1]] &&
-          dashboardData[ddState]['SecSide'][secSDcss[1]].map((data, keyV) => (
-            <div className="sec-level1" key={keyV}>
-              <div className="level1-title">{data[0]}</div>
-            </div>
-          ))}
+          dashboardData[ddState]['SecSide'][secSDcss[1]].map(
+            (data, keyV) => (
+              <div className="sec-level1" key={keyV}>
+                <div
+                  onClick={() => handleSecL1(data[0])}
+                  className="level1-title"
+                >
+                  {data[0]}
+                  <span className="sec-arrow">
+                    {secDataState[0] === data[0] ? (
+                      <ArrowDropDownIcon />
+                    ) : (
+                      <ArrowRightIcon />
+                    )}
+                    {/* <ArrowDropDownIcon /> */}
+                    {/* <ArrowrigthIcon /> */}
+                  </span>
+                </div>
+
+                {secDataState[0] === data[0] &&
+                  data[1] &&
+                  data[1].map((secdata) => (
+                    <div key={secdata[1]} className="sec-level2">
+                      {secdata[0]}
+                    </div>
+                  ))}
+              </div>
+            )
+          )}
       </div>
     </div>
   );

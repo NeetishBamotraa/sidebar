@@ -231,9 +231,7 @@
   top: 10vh;
   height: 90vh;
   transition-duration: 0.5s;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  padding: 5px;
 }
 
 .sec-sidebar-dark {
@@ -263,36 +261,6 @@
 
 .show-sec {
   width: 15vw;
-}
-
-.sec-level1 {
-  width: 90%;
-  margin-top: 10px;
-}
-
-.level1-title {
-  font-size: 1.2em;
-  cursor: pointer;
-}
-
-.sec-level2 {
-  margin-left: 10px;
-  transition-duration: 0.3s;
-  cursor: pointer;
-}
-
-.hide {
-  font-size: 0px;
-  height: 0px;
-}
-
-.sec-level3 {
-  margin-left: 10px;
-  transition-duration: 0.3s;
-}
-
-.level3-title {
-  font-size: 0.8em;
 }
 
 .navbar-search {
@@ -378,4 +346,28 @@
 
 .user-data-dark div {
   color: var(--bluecolor);
+}
+
+.sec-level1 {
+  margin-bottom: 5px;
+  position: relative;
+  font-size: 1.2em;
+}
+
+.level1-title {
+  cursor: pointer;
+  margin-left: 25px;
+}
+
+.sec-arrow {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.sec-level2 {
+  margin: 5px 0;
+  margin-left: 30px;
+  font-size: 0.9em;
+  cursor: pointer;
 }

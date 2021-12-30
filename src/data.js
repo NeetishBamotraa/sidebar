@@ -168,11 +168,19 @@ const dashboardData = {
       'Organize New Match': [
         [
           'Has Entry Fee',
-          ['Single Match Format', 'Multi Match Format', 'Challenge'],
+          [
+            ['Single Match Format', 0],
+            ['Multi Match Format', 1],
+            ['Challenge', 2],
+          ],
         ],
         [
           'Free Entry',
-          ['Single Match Format', 'Multi Match Format', 'Challenge'],
+          [
+            ['Single Match Format', 0],
+            ['Multi Match Format', 1],
+            ['Challenge', 2],
+          ],
         ],
       ],
     },
