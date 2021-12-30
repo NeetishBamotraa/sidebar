@@ -253,9 +253,14 @@
 
 .hide-sec {
   width: 0px;
+  left: -200px;
 }
 
 .hide-sec div {
+  display: none;
+}
+
+.hide-sec .sec-level1 {
   display: none;
 }
 
@@ -357,6 +362,7 @@
 .level1-title {
   cursor: pointer;
   margin-left: 25px;
+  margin-bottom: 25px;
 }
 
 .sec-arrow {
@@ -371,4 +377,3 @@
   font-size: 0.9em;
   cursor: pointer;
 }
-
