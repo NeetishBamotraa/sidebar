@@ -25,29 +25,38 @@ export default function ContentArea({
   };
   return (
     <div className={`ct-theme-${theme}`}>
-      <div className="ct-main-header">Select Your Game :</div>
-      <div className="ct-sec-header">Available Games</div>
-      <div className="ct-card-container">
-        {games.map((data) => (
-          <div
-            key={data}
-            onClick={() => gameSelect(data)}
-            className={`ct-card bg-blue ${
-              gameCur === data && 'ct-card-active'
-            }`}
-          >
-            {data}
+      {profile === 'Organizer' &&
+      priOpt === 'Organize New Match' &&
+      secOptl1 === 'Has Entry Fee' &&
+      secOptl2 === 'Single Match Format' ? (
+        <div>
+          <div className="ct-main-header">Select Your Game :</div>
+          <div className="ct-sec-header">Available Games</div>
+          <div className="ct-card-container">
+            {games.map((data) => (
+              <div
+                key={data}
+                onClick={() => gameSelect(data)}
+                className={`ct-card bg-blue ${
+                  gameCur === data && 'ct-card-active'
+                }`}
+              >
+                {data}
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
-      <div className="ct-final">
-        <div onClick={() => confirmGame()} className="ct-card bg-red">
-          Confirm
+          <div className="ct-final">
+            <div onClick={() => confirmGame()} className="ct-card bg-red">
+              Confirm
+            </div>
+            <div onClick={() => cancelGame()} className="ct-card bg-grey">
+              Cancel
+            </div>
+          </div>
         </div>
-        <div onClick={() => cancelGame()} className="ct-card bg-grey">
-          Cancel
-        </div>
-      </div>
+      ) : (
+        <h1>Work in Progress</h1>
+      )}
     </div>
   );
 }
