@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './style.css';
-import img1 from './images';
+import bgmi from "./images/bgmi.jpg"
 
 var games = ['BGMI', 'PUBG-Global', 'PUBG-Korean', 'PUBG-Mobile'];
 
@@ -38,12 +38,12 @@ export default function ContentArea({
             <div
               key={data}
               onClick={() => gameSelect(data)}
-              style={{ backgroundImage: img1 }}
               className={`ct-card bg-blue ${
                 gameCur === data && 'ct-card-active'
               }`}
             >
-              {data}
+              <img src={bgmi} />
+              <div>{data}</div>
             </div>
           ))}
         </div>
