@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './style.css';
-import bgmi from "./images/bgmi.jpg"
+import bgmi from "./images/pubg pc.jpg"
 
 var games = ['BGMI', 'PUBG-Global', 'PUBG-Korean', 'PUBG-Mobile'];
 
