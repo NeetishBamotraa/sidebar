@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './style.css';
 
-var games = ['BGMI', 'PUBG-Global', 'PUBG-Korea', 'PUBG-Mobile'];
+var games = ['BGMI', 'PUBG-Global', 'PUBG-Korean', 'PUBG-Mobile'];
 
 export default function ContentArea({
   theme,
@@ -25,10 +25,10 @@ export default function ContentArea({
   };
   return (
     <div className={`ct-theme-${theme}`}>
-      {profile === 'Organizer' &&
+      {/* {profile === 'Organizer' &&
       priOpt === 'Organize New Match' &&
       secOptl1 === 'Has Entry Fee' &&
-      secOptl2 === 'Single Match Format' ? (
+      secOptl2 === 'Single Match Format' ? ( */}
         <div>
           <div className="ct-main-header">Select Your Game :</div>
           <div className="ct-sec-header">Available Games</div>
@@ -46,19 +46,19 @@ export default function ContentArea({
             ))}
           </div>
           <div className="ct-final">
-            <div onClick={() => confirmGame()} className="ct-card bg-red">
+            <div onClick={() => confirmGame()} className="ct-cardop bg-red">
               Confirm
             </div>
-            <div onClick={() => cancelGame()} className="ct-card bg-grey">
+            <div onClick={() => cancelGame()} className="ct-cardop bg-grey">
               Cancel
             </div>
           </div>
         </div>
-      ) : (
-        <h1 style={{ color: `${theme === 'dark' ? 'white' : 'black'}` }}>
-          Work in Progress
-        </h1>
-      )}
+      {/* // ) : (
+      //   <h1 style={{ color: `${theme === 'dark' ? 'white' : 'black'}` }}>
+      //     Work in Progress
+      //   </h1>
+      )} */}
     </div>
   );
 }
