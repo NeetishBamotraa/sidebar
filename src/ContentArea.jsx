@@ -1,7 +1,12 @@
 import React, { useState } from 'react';
 import './style.css';
 
-var games = ['BGMI', 'PUBG-Global', 'PUBG-Korean', 'PUBG-Mobile'];
+var games = [
+  ['BGMI', 'bgmi'],
+  ['PUBG-Global', 'pubg global'],
+  ['PUBG-Korean', 'pubg korean'],
+  ['PUBG-Mobile', 'pubg pc'],
+];
 
 export default function ContentArea({
   theme,
@@ -26,42 +31,41 @@ export default function ContentArea({
   };
   return (
     <div className={`ct-theme-${theme}`}>
-      {/* {profile === 'Organizer' &&
+      {profile === 'Organizer' &&
       priOpt === 'Organize New Match' &&
       secOptl1 === 'Has Entry Fee' &&
-      secOptl2 === 'Single Match Format' ? ( */}
-      <div>
-        <div className="ct-main-header">Select Your Game :</div>
-        <div className="ct-sec-header">Available Games</div>
-        <div className="ct-card-container">
-          {games.map((data) => (
-            <div
-              key={data}
-              style={{
-                background:
-                  'url("https://stackblitz.com/files/react-hcswm8/github/NeetishBamotraa/sidebar/master/src/images/pubg pc.png")',
-              }}
-              onClick={() => gameSelect(data)}
-              className={`ct-card ${gameCur === data && 'ct-card-active'}`}
-            >
-              <div>{data}</div>
+      secOptl2 === 'Single Match Format' ? (
+        <div>
+          <div className="ct-main-header">Select Your Game :</div>
+          <div className="ct-sec-header">Available Games</div>
+          <div className="ct-card-container">
+            {games.map((data) => (
+              <div
+                key={data}
+                onClick={() => gameSelect(data[0])}
+                className={`ct-card ${gameCur === data[0] && 'ct-card-active'}`}
+              >
+                <img
+                  src={`https://www.github.com/NeetishBamotraa/sidebar/blob/master/public/images/${data[1]}.jpg?raw=true"`}
+                />
+                <div>{data[0]}</div>
+              </div>
+            ))}
+          </div>
+          <div className="ct-final">
+            <div onClick={() => confirmGame()} className="ct-cardop bg-red">
+              Confirm
             </div>
-          ))}
-        </div>
-        <div className="ct-final">
-          <div onClick={() => confirmGame()} className="ct-cardop bg-red">
-            Confirm
-          </div>
-          <div onClick={() => cancelGame()} className="ct-cardop bg-grey">
-            Cancel
+            <div onClick={() => cancelGame()} className="ct-cardop bg-grey">
+              Cancel
+            </div>
           </div>
         </div>
-      </div>
-      {/* // ) : (
-      //   <h1 style={{ color: `${theme === 'dark' ? 'white' : 'black'}` }}>
-      //     Work in Progress
-      //   </h1>
-      )} */}
+      ) : (
+        <h1 style={{ color: `${theme === 'dark' ? 'white' : 'black'}` }}>
+          Work in Progress
+        </h1>
+      )}
     </div>
   );
 }
