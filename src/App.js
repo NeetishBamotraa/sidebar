@@ -134,7 +134,6 @@ export default function App() {
           </div>
         </div>
         <div className="right-nav-header">
-          
           <div className="bell-icon">
             <BellOutlined />
           </div>
@@ -214,7 +213,12 @@ export default function App() {
           ))}
         <div className="sd-last">
           <div className="theme-ar">
-            <h3 style={{ color: `${theme === 'dark' ? 'white' : 'black'}` }}>
+            <h3
+              style={{
+                marginLeft: '10px',
+                color: `${theme === 'dark' ? 'white' : 'black'}`,
+              }}
+            >
               Dark/Light
             </h3>
             <div onClick={handleTheme} className={`theme-logo-${theme}`}>
