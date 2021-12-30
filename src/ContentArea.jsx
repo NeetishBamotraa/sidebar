@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import './style.css';
-import { bgmi } from './images/pubg pc.png';
 
 var games = ['BGMI', 'PUBG-Global', 'PUBG-Korean', 'PUBG-Mobile'];
 
@@ -13,7 +12,7 @@ export default function ContentArea({
   rtStateChange,
 }) {
   const [gameCur, setgameCur] = useState('');
-  console.log(bgmi);
+
   const gameSelect = (game) => {
     setgameCur(game);
   };
@@ -43,7 +42,7 @@ export default function ContentArea({
                 gameCur === data && 'ct-card-active'
               }`}
             >
-              <img src={bgmi} />
+              <img src="./~/public/images/pubg pc.png" />
               <div>{data}</div>
             </div>
           ))}
