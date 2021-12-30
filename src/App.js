@@ -25,9 +25,8 @@ const menudata = [
   'Organizer',
   'Team Owner',
   'Content creator',
-  'Buyer and Seller',
+  'Buyer & Seller',
   'Service Provider',
-  'Investor & Investment',
 ];
 
 export default function App() {
@@ -211,6 +210,7 @@ export default function App() {
               </Collapse>
             </div>
           ))}
+          {SDsize ==='long' &&
         <div className="sd-last">
           <div className="theme-ar">
             <h3
@@ -246,7 +246,7 @@ export default function App() {
               </Dropdown>
             </div>
           </div>
-        </div>
+        </div>}
       </div>
 
       <div
