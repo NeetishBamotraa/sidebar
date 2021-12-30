@@ -19,6 +19,7 @@ import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft';
 import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
 import Collapse from '@mui/material/Collapse';
+import ContentArea from './ContentArea.jsx';
 
 const menudata = [
   'Gamer',
@@ -36,12 +37,50 @@ export default function App() {
   const [SDsize, setSDsize] = useState('long');
   const [subKey, setsubKey] = useState([-1, false]);
   const [secDataState, setsecDataState] = useState(['level1', false]);
+  const [ctwdT, setctwdT] = useState('');
+  const [dataCTarea, setdataCTarea] = useState(['', '']);
+  const [rtState, setrtState] = useState([false, '']);
 
   useEffect(() => {
     let color = theme === 'light' ? 'white' : 'black';
     document.body.style.backgroundColor = color;
     document.body.style.color = 'white';
   }, [theme]);
+
+  useEffect(() => {
+    let val1 = secSDcss[0].includes('hide-sec');
+    let val2 = SDsize === 'long';
+    let val3 = rtState[0];
+    if (val3) {
+      if (val1) {
+        if (val2) {
+          setctwdT('psl-sss-rt');
+        } else {
+          setctwdT('pss-sss-rt');
+        }
+      } else {
+        if (val2) {
+          setctwdT('psl-ssl-rt');
+        } else {
+          setctwdT('pss-ssl-rt');
+        }
+      }
+    } else {
+      if (val1) {
+        if (val2) {
+          setctwdT('psl-sss');
+        } else {
+          setctwdT('pss-sss');
+        }
+      } else {
+        if (val2) {
+          setctwdT('psl-ssl');
+        } else {
+          setctwdT('pss-ssl');
+        }
+      }
+    }
+  }, [secSDcss, SDsize, rtState]);
 
   function handleMenuClick(e) {
     setsecSDcss(['sec-sidebar hide-sec', 'emp']);
@@ -112,6 +151,14 @@ export default function App() {
   const handleSecL1 = (val) => {
     if (secDataState[0] === val) setsecDataState(['level1', false]);
     else setsecDataState([val, true]);
+  };
+
+  const handleSecOptions = (level1, level2) => {
+    setdataCTarea([level1, level2]);
+  };
+
+  const rtStateChange = (val, game) => {
+    setrtState([val, game]);
   };
 
   return (
@@ -210,43 +257,44 @@ export default function App() {
               </Collapse>
             </div>
           ))}
-          {SDsize ==='long' &&
-        <div className="sd-last">
-          <div className="theme-ar">
-            <h3
-              style={{
-                marginLeft: '10px',
-                color: `${theme === 'dark' ? 'white' : 'black'}`,
-              }}
-            >
-              Dark/Light
-            </h3>
-            <div onClick={handleTheme} className={`theme-logo-${theme}`}>
-              {theme === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
+        {SDsize === 'long' && (
+          <div className="sd-last">
+            <div className="theme-ar">
+              <h3
+                style={{
+                  marginLeft: '10px',
+                  color: `${theme === 'dark' ? 'white' : 'black'}`,
+                }}
+              >
+                Dark/Light
+              </h3>
+              <div onClick={handleTheme} className={`theme-logo-${theme}`}>
+                {theme === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
+              </div>
             </div>
-          </div>
 
-          <div className="role">
-            <h3 style={{ color: `${theme === 'dark' ? 'white' : 'black'}` }}>
-              Change Role
-            </h3>
-            <div>
-              <Dropdown overlay={menu}>
-                <Button
-                  style={{
-                    backgroundColor: `${
-                      theme === 'dark' ? 'black' : 'rgb(65, 100, 240)'
-                    }`,
-                    color: 'white',
-                  }}
-                >
-                  {ddState}
-                  <DownOutlined />
-                </Button>
-              </Dropdown>
+            <div className="role">
+              <h3 style={{ color: `${theme === 'dark' ? 'white' : 'black'}` }}>
+                Change Role
+              </h3>
+              <div>
+                <Dropdown overlay={menu}>
+                  <Button
+                    style={{
+                      backgroundColor: `${
+                        theme === 'dark' ? 'black' : 'rgb(65, 100, 240)'
+                      }`,
+                      color: 'white',
+                    }}
+                  >
+                    {ddState}
+                    <DownOutlined />
+                  </Button>
+                </Dropdown>
+              </div>
             </div>
           </div>
-        </div>}
+        )}
       </div>
 
       <div
@@ -281,7 +329,11 @@ export default function App() {
                   {secDataState[0] === data[0] &&
                     data[1] &&
                     data[1].map((secdata) => (
-                      <div key={secdata[1]} className="seclevel2">
+                      <div
+                        onClick={() => handleSecOptions(data[0], secdata[0])}
+                        key={secdata[1]}
+                        className="seclevel2"
+                      >
                         {secdata[0]}
                       </div>
                     ))}
@@ -290,6 +342,17 @@ export default function App() {
             )
           )}
       </div>
+      <div className={`content-area content-wd-${ctwdT}`}>
+        <ContentArea
+          theme={theme}
+          profile={ddState}
+          priOpt={secSDcss[1]}
+          secOptl1={dataCTarea[0]}
+          secOptl2={dataCTarea[1]}
+          rtStateChange={rtStateChange}
+        />
+      </div>
+      {rtState[0] && <div className="right-sidebar">{rtState[1]}</div>}
     </div>
   );
 }

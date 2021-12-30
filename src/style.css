@@ -373,6 +373,16 @@
   margin-left: 30px;
   font-size: 0.9em;
   cursor: pointer;
+  transition-duration: 0.2s;
+}
+
+.seclevel2:hover {
+  background-color: blue;
+  transition-duration: 0.2s;
+  padding-left: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  color: white;
 }
 
 .sd-last {
@@ -403,4 +413,116 @@
   align-items: center;
   border-top: 1px solid grey;
   padding: 5px 0;
+}
+
+.content-area {
+  position: absolute;
+  top: 10vh;
+  right: 0;
+  color: white;
+  height: 90vh;
+  transition-duration: 0.5s;
+  padding: 10px;
+}
+
+.content-wd-psl-sss {
+  width: calc(100vw - var(--sidebarlongwidth) - 10px);
+}
+
+.content-wd-pss-sss {
+  width: calc(100vw - var(--sidebarshortwidth) - 10px);
+}
+
+.content-wd-psl-ssl {
+  width: calc(85vw - var(--sidebarlongwidth));
+}
+
+.content-wd-pss-ssl {
+  width: calc(85vw - var(--sidebarshortwidth));
+}
+
+.content-wd-psl-sss-rt {
+  right: 10vw;
+  width: calc(90vw - var(--sidebarlongwidth) - 10px);
+}
+
+.content-wd-pss-sss-rt {
+  right: 10vw;
+  width: calc(90vw - var(--sidebarshortwidth) - 10px);
+}
+.content-wd-psl-ssl-rt {
+  right: 10vw;
+  width: calc(75vw - var(--sidebarlongwidth));
+}
+
+.content-wd-pss-ssl-rt {
+  right: 10vw;
+  width: calc(75vw - var(--sidebarshortwidth));
+}
+
+.ct-theme-light {
+  color: black;
+}
+
+.ct-main-header {
+  font-size: large;
+  font-weight: 600;
+}
+
+.ct-sec-header {
+  margin-top: 20px;
+  color: grey;
+}
+
+.ct-card-container {
+  margin-top: 20px;
+  width: 100%;
+  border: 1px solid grey;
+  padding: 10px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.ct-card {
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 10px;
+  height: 30px;
+}
+
+.bg-blue {
+  background-color: blue;
+  color: white;
+}
+
+.bg-red {
+  background-color: red;
+  color: white;
+}
+
+.bg-grey {
+  background-color: grey;
+  color: white;
+}
+
+.ct-card-active {
+  font-size: 1.3em;
+  height: 40px;
+}
+
+.ct-final {
+  margin-top: 20px;
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.right-sidebar {
+  position: absolute;
+  top: 10vh;
+  right: 0;
+  width: 10vw;
+  height: 90vh;
+  border: 1px solid red;
 }
