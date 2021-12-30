@@ -268,9 +268,8 @@
 }
 
 .navbar-search {
-  width: 10vw;
+  width: 15vw;
   height: 40%;
-  margin: 10px;
   border-radius: 50px;
   padding: 0 10px;
   box-shadow: 0px 2px 5px 2px rgb(10, 10, 10);
@@ -375,4 +374,29 @@
   margin-left: 30px;
   font-size: 0.9em;
   cursor: pointer;
+}
+
+.sd-last {
+  position: absolute;
+  bottom: 0;
+  padding: 5px;
+  width: 100%;
+}
+
+.sd-last .theme-ar {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid grey;
+  padding-top: 10px;
+}
+
+.sd-last .role {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+  border-top: 1px solid grey;
 }

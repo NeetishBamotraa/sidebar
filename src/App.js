@@ -122,26 +122,6 @@ export default function App() {
           <div className={`sidebar-logo-${theme}`}>
             <AliyunOutlined />
           </div>
-        </div>
-        <div className="right-nav-header">
-          <div onClick={handleTheme} className={`theme-logo-${theme}`}>
-            {theme === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
-          </div>
-          <div>
-            <Dropdown overlay={menu}>
-              <Button
-                style={{
-                  backgroundColor: `${
-                    theme === 'dark' ? 'black' : 'rgb(65, 100, 240)'
-                  }`,
-                  color: 'white',
-                }}
-              >
-                {ddState}
-                <DownOutlined />
-              </Button>
-            </Dropdown>
-          </div>
           <div className="navbar-search">
             <input
               className={`nb-srh-in-${theme}`}
@@ -152,6 +132,9 @@ export default function App() {
               <SearchOutlined />
             </div>
           </div>
+        </div>
+        <div className="right-nav-header">
+          
           <div className="bell-icon">
             <BellOutlined />
           </div>
@@ -229,6 +212,37 @@ export default function App() {
               </Collapse>
             </div>
           ))}
+        <div className="sd-last">
+          <div className="theme-ar">
+            <h3 style={{ color: `${theme === 'dark' ? 'white' : 'black'}` }}>
+              Dark/Light
+            </h3>
+            <div onClick={handleTheme} className={`theme-logo-${theme}`}>
+              {theme === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
+            </div>
+          </div>
+
+          <div className="role">
+            <h3 style={{ color: `${theme === 'dark' ? 'white' : 'black'}` }}>
+              Change Role
+            </h3>
+            <div>
+              <Dropdown overlay={menu}>
+                <Button
+                  style={{
+                    backgroundColor: `${
+                      theme === 'dark' ? 'black' : 'rgb(65, 100, 240)'
+                    }`,
+                    color: 'white',
+                  }}
+                >
+                  {ddState}
+                  <DownOutlined />
+                </Button>
+              </Dropdown>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div
