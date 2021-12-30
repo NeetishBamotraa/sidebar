@@ -207,7 +207,7 @@ const dashboardData = {
     ],
     Level2: [],
   },
-  'Buyer and Seller': {
+  'Buyer & Seller': {
     Level1: [
       [<HomeOutlined />, 'Dashboard'],
       [<HomeOutlined />, 'Buyer and Seller'],
