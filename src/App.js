@@ -18,6 +18,7 @@ import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft';
 import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
+import Collapse from '@mui/material/Collapse';
 
 const menudata = [
   'Gamer',
@@ -34,8 +35,8 @@ export default function App() {
   const [secSDcss, setsecSDcss] = useState(['sec-sidebar show-sec', 'emp']);
   const [theme, setTheme] = useState('dark');
   const [SDsize, setSDsize] = useState('long');
-  const [subKey, setsubKey] = useState(0);
-  const [secDataState, setsecDataState] = useState(['level1']);
+  const [subKey, setsubKey] = useState([-1, false]);
+  const [secDataState, setsecDataState] = useState(['level1', false]);
 
   useEffect(() => {
     let color = theme === 'light' ? 'white' : 'black';
@@ -99,14 +100,17 @@ export default function App() {
   };
 
   const handleCSidebar = (keyV) => {
-    if (keyV === subKey) {
-      setsubKey(-1);
-    } else setsubKey(keyV);
+    if (keyV === subKey[0]) {
+      setsubKey([-1, false]);
+    } else {
+      setsubKey([-1, false]);
+      setsubKey([keyV, true]);
+    }
   };
 
   const handleSecL1 = (val) => {
-    if (secDataState[0] === val) setsecDataState(['level1']);
-    else setsecDataState([val]);
+    if (secDataState[0] === val) setsecDataState(['level1', false]);
+    else setsecDataState([val, true]);
   };
 
   return (
@@ -183,38 +187,44 @@ export default function App() {
                 {SDsize === 'long' && (
                   <span className="sidebar-items-text">{data[1]}</span>
                 )}
-                {SDsize === 'long' && keyV === subKey && (
+                {SDsize === 'long' && keyV === subKey[0] && (
                   <span className="sidebar-items-arrow">
                     <ArrowDropDownIcon />
                   </span>
                 )}
-                {SDsize === 'long' && keyV !== subKey && (
+                {SDsize === 'long' && keyV !== subKey[0] && (
                   <span className="sidebar-items-arrow">
                     <ArrowLeftIcon />
                   </span>
                 )}
               </div>
 
-              {subKey === keyV &&
-                data[2].map((newdata) => {
-                  return (
-                    <div
-                      className="sidebar-sub-items"
-                      key={newdata[2]}
-                      onClick={() => handleMSidebarBtn(newdata[1], newdata[2])}
-                      // onMouseEnter={() =>
-                      //   handleMSidebarBtn(newdata[1], newdata[2])
-                      // }
-                    >
-                      <div className="sidebar-sub-items-img">{newdata[0]}</div>
-                      {SDsize === 'long' && (
-                        <span className="sidebar-sub-items-text">
-                          {newdata[1]}
-                        </span>
-                      )}
-                    </div>
-                  );
-                })}
+              <Collapse in={subKey[1]} unmountOnExit>
+                {subKey[0] === keyV &&
+                  data[2].map((newdata) => {
+                    return (
+                      <div
+                        className="sidebar-sub-items"
+                        key={newdata[2]}
+                        onClick={() =>
+                          handleMSidebarBtn(newdata[1], newdata[2])
+                        }
+                        // onMouseEnter={() =>
+                        //   handleMSidebarBtn(newdata[1], newdata[2])
+                        // }
+                      >
+                        <div className="sidebar-sub-items-img">
+                          {newdata[0]}
+                        </div>
+                        {SDsize === 'long' && (
+                          <span className="sidebar-sub-items-text">
+                            {newdata[1]}
+                          </span>
+                        )}
+                      </div>
+                    );
+                  })}
+              </Collapse>
             </div>
           ))}
       </div>
@@ -226,8 +236,8 @@ export default function App() {
         }
       >
         {dashboardData[ddState]['SecSide'] &&
-          dashboardData[ddState]['SecSide'][secSDcss[1]] &&
-          dashboardData[ddState]['SecSide'][secSDcss[1]].map(
+          dashboardData[ddState]['SecSide']['Organize New Match'] &&
+          dashboardData[ddState]['SecSide']['Organize New Match'].map(
             (data, keyV) => (
               <div className="sec-level1" key={keyV}>
                 <div
@@ -235,6 +245,7 @@ export default function App() {
                   className="level1-title"
                 >
                   {data[0]}
+
                   <span className="sec-arrow">
                     {secDataState[0] === data[0] ? (
                       <ArrowDropDownIcon />
@@ -246,13 +257,15 @@ export default function App() {
                   </span>
                 </div>
 
-                {secDataState[0] === data[0] &&
-                  data[1] &&
-                  data[1].map((secdata) => (
-                    <div key={secdata[1]} className="sec-level2">
-                      {secdata[0]}
-                    </div>
-                  ))}
+                <Collapse in={secDataState[1]}>
+                  {secDataState[0] === data[0] &&
+                    data[1] &&
+                    data[1].map((secdata) => (
+                      <div key={secdata[1]} className="seclevel2">
+                        {secdata[0]}
+                      </div>
+                    ))}
+                </Collapse>
               </div>
             )
           )}

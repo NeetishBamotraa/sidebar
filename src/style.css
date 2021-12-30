@@ -365,9 +365,10 @@
   left: 0;
 }
 
-.sec-level2 {
+.seclevel2 {
   margin: 5px 0;
   margin-left: 30px;
   font-size: 0.9em;
   cursor: pointer;
 }
+
