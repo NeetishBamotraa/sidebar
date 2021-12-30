@@ -37,12 +37,13 @@ export default function ContentArea({
           {games.map((data) => (
             <div
               key={data}
+              style={{
+                background:
+                  'url("https://stackblitz.com/files/react-hcswm8/github/NeetishBamotraa/sidebar/master/src/images/pubg pc.png")',
+              }}
               onClick={() => gameSelect(data)}
-              className={`ct-card bg-blue ${
-                gameCur === data && 'ct-card-active'
-              }`}
+              className={`ct-card ${gameCur === data && 'ct-card-active'}`}
             >
-              <img src="./~/public/images/pubg pc.png" />
               <div>{data}</div>
             </div>
           ))}
