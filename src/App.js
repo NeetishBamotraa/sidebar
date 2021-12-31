@@ -26,11 +26,6 @@ import Match from './components/Match.js';
 import EntryFee from './components/EntryFee.js';
 import PrizePool from './components/PrizePool.js';
 import PrizeDistributionSimple from './components/PrizeDistributionSimple.js';
-import Requirements from './components/Requirements.js';
-import AddRules from './components/AddRules.js';
-import PointSystem from './components/PointSystem.js';
-import AddUmpires from './components/AddUmpires.jsx';
-import InputField from './components/InputField.jsx';
 
 const menudata = [
   'Gamer',
@@ -391,18 +386,11 @@ export default function App() {
               />
             ),
             'step 1': <BasicInfo theme={theme} stepSelect={stepSelect} />,
-            'step 2': <Schedule theme={theme} stepSelect={stepSelect} />,
-            'step 3': <Match theme={theme} stepSelect={stepSelect} />,
-            'step 4': <EntryFee theme={theme} stepSelect={stepSelect} />,
-            'step 5': <PrizePool theme={theme} stepSelect={stepSelect} />,
-            'step 6': (
-              <PrizeDistributionSimple theme={theme} stepSelect={stepSelect} />
-            ),
-            'step 7': <Requirements theme={theme} stepSelect={stepSelect} />,
-            'step 8': <AddRules theme={theme} stepSelect={stepSelect} />,
-            'step 9': <PointSystem theme={theme} stepSelect={stepSelect} />,
-            'step 10': <AddUmpires theme={theme} stepSelect={stepSelect} />,
-            'step 11': <InputField theme={theme} stepSelect={stepSelect} />,
+            'step 2': <Schedule theme={theme} stepSelect={stepSelect}/>,
+            'step 3': <Match theme={theme} stepSelect={stepSelect}/>,
+            'step 4': <EntryFee theme={theme} stepSelect={stepSelect}/>,
+            'step 5': <PrizePool theme={theme} stepSelect={stepSelect}/>,
+            'step 6': <PrizeDistributionSimple theme={theme} stepSelect={stepSelect} />,
             'step -1': (
               <h1 style={{ color: `${theme === 'dark' ? 'white' : 'black'}` }}>
                 Work Under Process
