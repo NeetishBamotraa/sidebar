@@ -64,7 +64,7 @@ export default function App() {
   const [secDataState, setsecDataState] = useState(['level1', false]);
   const [ctwdT, setctwdT] = useState('');
   const [dataCTarea, setdataCTarea] = useState(['', '']);
-  const [rtState, setrtState] = useState([false, '', 'step -1']);
+  const [rtState, setrtState] = useState([true, '', 'step 0']);
 
   useEffect(() => {
     let color = theme === 'light' ? 'white' : 'black';
