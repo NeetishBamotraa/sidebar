@@ -39,7 +39,7 @@ const steps = [
 export default function App() {
   const [ddState, setDDState] = useState('Gamer');
   const [secSDcss, setsecSDcss] = useState(['sec-sidebar hide-sec', 'emp']);
-  const [theme, setTheme] = useState('light');
+  const [theme, setTheme] = useState('dark');
   const [SDsize, setSDsize] = useState('long');
   const [subKey, setsubKey] = useState([-1, false]);
   const [secDataState, setsecDataState] = useState(['level1', false]);
