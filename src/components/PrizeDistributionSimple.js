@@ -1,0 +1,375 @@
+import React, { useState } from 'react';
+import Advance_page from './PrizeDistributionAdvance.js';
+import DeleteIcon from '@material-ui/icons/Delete';
+import AddIcon from '@material-ui/icons/Add';
+import Container from '@material-ui/core/Container';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
+import RemoveIcon from '@material-ui/icons/Remove';
+import Icon from '@material-ui/core/Icon';
+import { v4 as uuidv4 } from 'uuid';
+import './PrizeDistribution.css';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    '& .MuiTextField-root': {
+      margin: theme.spacing(1),
+    },
+  },
+  button: {
+    margin: theme.spacing(1),
+  },
+}));
+
+const Simple = ({ theme, stepSelect }) => {
+  const classes = useStyles();
+
+  const [method, setmethod] = useState('');
+  const [showrank, setshowrank] = useState(false);
+  const [showrange, setshowrange] = useState(false);
+
+  const MethodChecker = () => {
+    if (method === 'Advance') {
+      return <Advance />;
+    } else {
+      return <Simple />;
+    }
+  };
+
+  const Simple = () => {
+    const [mode, setmode] = useState('');
+
+    /* rank */
+
+    const [inputFields, setInputFields] = useState([
+      { id: uuidv4(), rank: '', prize: '' },
+    ]);
+
+    const handleSubmit = (e) => {
+      e.preventDefault();
+      console.log('InputFields', inputFields);
+    };
+
+    const handleChangeInput = (id, event) => {
+      const newInputFields = inputFields.map((i) => {
+        if (id === i.id) {
+          i[event.target.name] = event.target.value;
+        }
+        return i;
+      });
+
+      setInputFields(newInputFields);
+    };
+
+    const handleAddFields = () => {
+      setInputFields([...inputFields, { id: uuidv4(), rank: '', prize: '' }]);
+    };
+
+    const handleRemoveFields = (id) => {
+      const values = [...inputFields];
+      values.splice(
+        values.findIndex((value) => value.id === id),
+        1
+      );
+      setInputFields(values);
+    };
+    function Showrank() {
+      document.getElementById('showrank');
+    }
+
+    /*Range*/
+
+    const [rangeFields, setRangefields] = useState([
+      {
+        id: uuidv4(),
+        rangeto: '',
+        rangefrom: '',
+        prize: '',
+      },
+    ]);
+
+    const handlerSubmit = (e) => {
+      e.preventDefault();
+      console.log('RangeFields', rangeFields);
+    };
+
+    const handlerChangeInput = (id, event) => {
+      const newRangeFields = rangeFields.map((i) => {
+        if (id === i.id) {
+          i[event.target.name] = event.target.value;
+        }
+        return i;
+      });
+      setRangefields(newRangeFields);
+    };
+    const handlerAddFields = () => {
+      setRangefields([
+        ...rangeFields,
+        { id: uuidv4(), rangeto: '', rangefrom: '', prize: '' },
+      ]);
+    };
+    const handlerRemoveFields = (id) => {
+      const values = [...rangeFields];
+      values.splice(
+        values.findIndex((value) => value.id === id),
+        1
+      );
+      setRangefields(values);
+    };
+
+    const nextHandler = () => {
+      // code to next..
+      stepSelect('step 7');
+    };
+
+    return (
+      <div style={{ color: `${theme === 'dark' ? 'white' : 'black'}` }}>
+        <section
+          onChange={(e) => {
+            setmode(e.target.value);
+          }}
+        >
+          <h4> Mode </h4>
+          <input type="radio" value="Squad" name="mode" /> Squad
+          <input type="radio" value="Duo" name="mode" /> Duo
+          <input type="radio" value="solo" name="mode" /> solo
+          <br />
+        </section>
+        <br />
+        <label htmlFor=""> Add Rank & Prize Amount </label>
+        <br />
+        <button
+          className="Add_Rank"
+          onClick={() => {
+            setshowrank((s) => !s);
+          }}
+        >
+          {' '}
+          Add Rank{' '}
+        </button>
+        <button
+          className="Add_Range"
+          onClick={() => {
+            setshowrange((s) => !s);
+          }}
+        >
+          {' '}
+          Add Range{' '}
+        </button>
+        <br />
+        <br />
+        {/* rank ka section */}
+        <div style={{ display: showrank ? 'block' : 'none' }}>
+          <Container>
+            <form onSubmit={handleSubmit}>
+              {inputFields.map((inputField) => (
+                <div key={inputField.id}>
+                  <TextField
+                    name="rank"
+                    label="Rank"
+                    variant="filled"
+                    value={inputField.rank}
+                    onChange={(event) =>
+                      handleChangeInput(inputField.id, event)
+                    }
+                  />
+                  &nbsp;&nbsp;
+                  <TextField
+                    name="prize"
+                    label="Prize"
+                    variant="filled"
+                    value={inputField.prize}
+                    onChange={(event) =>
+                      handleChangeInput(inputField.id, event)
+                    }
+                  />
+                  <IconButton onClick={handleAddFields}>
+                    <AddIcon />
+                  </IconButton>
+                  <IconButton
+                    disabled={inputFields.length === 1}
+                    onClick={() => handleRemoveFields(inputField.id)}
+                  >
+                    <RemoveIcon />
+                  </IconButton>
+                </div>
+              ))}
+              <Button
+                variant="contained"
+                color="primary"
+                type="submit"
+                endIcon={<Icon></Icon>}
+                onClick={handleSubmit}
+              >
+                Submit
+              </Button>
+            </form>
+          </Container>
+        </div>
+
+        {/* *************************range ka secrtion***************************** */}
+
+        <div style={{ display: showrange ? 'block ' : 'none' }}>
+          <Container>
+            <form onSubmit={handlerSubmit}>
+              {rangeFields.map((rangeField) => (
+                <div key={rangeField.id}>
+                  <TextField
+                    name="rangeto"
+                    label="Rangeto"
+                    variant="filled"
+                    value={rangeField.rangeto}
+                    onChange={(event) =>
+                      handlerChangeInput(rangeField.id, event)
+                    }
+                  />
+                  &nbsp;&nbsp;
+                  <TextField
+                    name="rangefrom"
+                    label="Rangefrom"
+                    variant="filled"
+                    value={rangeField.rangefrom}
+                    onChange={(event) =>
+                      handlerChangeInput(rangeField.id, event)
+                    }
+                  />
+                  <TextField
+                    name="prize"
+                    label="Prize"
+                    variant="filled"
+                    value={rangeField.prize}
+                    onChange={(event) =>
+                      handlerChangeInput(rangeField.id, event)
+                    }
+                  />
+                  <IconButton onClick={handlerAddFields}>
+                    <AddIcon />
+                  </IconButton>
+                  <IconButton
+                    disabled={rangeFields.length === 1}
+                    onClick={() => handlerRemoveFields(rangeField.id)}
+                  >
+                    <RemoveIcon />
+                  </IconButton>
+                </div>
+              ))}
+              <Button
+                variant="contained"
+                color="primary"
+                type="submit"
+                endIcon={<Icon></Icon>}
+              >
+                Submit
+              </Button>
+            </form>
+          </Container>
+        </div>
+        {/* map method in rank */}
+        {/*
+                printdata.map((inputField , index)=>{
+                        return (
+                            
+                          <div className="mainrank" key={index}>
+                         <div className="rank">   <p>Rank : {inputField.rank} </p>  </div>
+                           <div className="prize"> <p> prize:{inputField.prize} </p></div>
+                           <div className="inr"> <p>inr :{inputField.prize*2}</p>   </div>
+                           <button onClick={()=>{deleteItem(index)}} > <DeleteIcon fontSize="small" /></button>
+                          </div>
+                       
+
+                        )
+                })
+            */}
+        {/*
+                 printrange.map((ele , index)=>{
+                    return (
+                        
+                      <div className="mainrank" key = {index}>
+                     <div className="rank">   <p>Range : {ele.rangeto} </p>  </div>
+                     <p>to</p>
+                     <div className="rank">   <p>  {ele.rangefrom} </p>  </div>
+                       <div className="prize"> <p> prize:{ele.prize}  </p></div>
+                       <div className="inr"> <p>inr :{ele.prize*2}</p>   </div>
+                       <button onClick={()=>{deleteItem2(index)}} > <i class="fa fa-trash"></i></button>
+                      </div>
+                   
+                    )
+            })
+        */}
+      </div>
+    );
+  };
+
+  const Advance = () => {
+    return <Advance_page />;
+  };
+
+  return (
+    <div>
+      <div align="right">
+        <Button
+          onClick={() => console.log('you clicked me')}
+          type="submit"
+          color="secondary"
+          variant="contained"
+          style={{ flex: 1 }}
+        >
+          Submit
+        </Button>
+        <Button
+          onClick={() => console.log('you clicked me')}
+          type="submit"
+          color="primary"
+          variant="contained"
+          style={{ flex: 1 }}
+        >
+          Preview
+        </Button>
+        <br></br>
+      </div>
+      <label htmlFor=""> Select your price </label>
+      <div className="method">
+        <section
+          onChange={(e) => {
+            setmethod(e.target.value);
+          }}
+        >
+          <h4> method </h4>
+          <input type="radio" value="simple" name="method" /> simple
+          <input type="radio" value="Advance" name="method" /> Advance
+          <br />
+        </section>
+
+        <div className="Mode">
+          <br />
+          <MethodChecker />
+        </div>
+      </div>
+      <br></br>
+      <div align="right">
+        <Button
+          onClick={() => console.log('you clicked me')}
+          type="submit"
+          color="secondary"
+          variant="contained"
+          style={{ flex: 1 }}
+        >
+          Previous
+        </Button>
+        <Button
+          onClick={nextHandler}
+          type="submit"
+          color="primary"
+          variant="contained"
+          style={{ flex: 1 }}
+        >
+          Next
+        </Button>
+      </div>
+    </div>
+  );
+};
+
+export default Simple;
