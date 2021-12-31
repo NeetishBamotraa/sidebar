@@ -531,11 +531,14 @@
 }
 
 .ct-final {
-  margin-top: 20px;
+  margin: 20px;
   width: 15%;
   padding: 10px;
   display: flex;
-  justify-content: space-evenly;
+}
+
+.ct-final div {
+  margin-left: 20px;
 }
 
 .ct-cardop {
