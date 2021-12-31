@@ -30,6 +30,11 @@ const menudata = [
   'Service Provider',
 ];
 
+const steps = [
+  ['step 1', 'Basic Info'],
+  ['step 2', 'Next Step'],
+];
+
 export default function App() {
   const [ddState, setDDState] = useState('Gamer');
   const [secSDcss, setsecSDcss] = useState(['sec-sidebar hide-sec', 'emp']);
@@ -39,7 +44,7 @@ export default function App() {
   const [secDataState, setsecDataState] = useState(['level1', false]);
   const [ctwdT, setctwdT] = useState('');
   const [dataCTarea, setdataCTarea] = useState(['', '']);
-  const [rtState, setrtState] = useState([false, '']);
+  const [rtState, setrtState] = useState([true, 'BGMI', 'step 0']);
 
   useEffect(() => {
     let color = theme === 'light' ? 'white' : 'black';
@@ -159,7 +164,15 @@ export default function App() {
   };
 
   const rtStateChange = (val, game) => {
-    setrtState([val, game]);
+    setrtState([val, game, 'step 1']);
+  };
+
+  const rtSDcloseBtn = () => {
+    setrtState([false, '', '']);
+  };
+
+  const stepSelect = (val) => {
+    setrtState([rtState[0], rtState[1], val]);
   };
 
   return (
@@ -344,6 +357,9 @@ export default function App() {
           )}
       </div>
       <div className={`content-area content-wd-${ctwdT}`}>
+        {switch(rtState[2]){
+          
+        }}
         <ContentArea
           theme={theme}
           profile={ddState}
@@ -353,7 +369,29 @@ export default function App() {
           rtStateChange={rtStateChange}
         />
       </div>
-      {rtState[0] && <div className="right-sidebar">{rtState[1]}</div>}
+      {rtState[0] && (
+        <div className={`right-sidebar right-sidebar-${theme}`}>
+          <div className="rt-sd-title">
+            <span>{rtState[1]}</span>
+            <span onClick={rtSDcloseBtn} className="rt-sd-close">
+              X
+            </span>
+          </div>
+          <div className="rt-sd-steps-ct">
+            {steps.map((data) => (
+              <div
+                onClick={() => stepSelect(data[0])}
+                key={data[0]}
+                className={`rt-sd-steps ${
+                  rtState[2] === data[0] && 'rt-active-step'
+                }`}
+              >
+                {data[1]}
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 }
