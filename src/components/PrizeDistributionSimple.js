@@ -119,11 +119,6 @@ const Simple = ({ theme, stepSelect }) => {
       setRangefields(values);
     };
 
-    const nextHandler = () => {
-      // code to next..
-      stepSelect('step 7');
-    };
-
     return (
       <div style={{ color: `${theme === 'dark' ? 'white' : 'black'}` }}>
         <section
@@ -359,7 +354,9 @@ const Simple = ({ theme, stepSelect }) => {
           Previous
         </Button>
         <Button
-          onClick={nextHandler}
+          onClick={() => {
+            stepSelect('step 7');
+          }}
           type="submit"
           color="primary"
           variant="contained"

@@ -1,0 +1,54 @@
+.mainScreen {
+  padding: 50px;
+}
+
+.mainScreen__topContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.mainScreen__subTitleName {
+  font-weight: 350;
+  text-transform: capitalize;
+  margin-top: -5px;
+  margin-bottom: 40px;
+}
+
+.mainScreen__Sections {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mainScreen__buttonSection {
+  margin-right: 150px;
+}
+
+.mainScreen__buttonSection > .btn {
+  margin: 0 5px;
+}
+
+.mainScreen__radioSection {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 30px;
+}
+
+.mainScreen__simpleOption,
+.mainScreen__AdvanceOption {
+  margin-left: 20px;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+label {
+  cursor: pointer;
+}
+
+.mainScreen__optionSection > .btn {
+  margin-right: 20px;
+}
+
+.mainScreen__bottomContainer {
+  padding: 10px 20px;
+}
