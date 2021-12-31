@@ -27,7 +27,7 @@ const DUMMY_DATA = {
 };
 
 // Note: here "DataListPages" can be changed to "BasicInfo" while adding to original project.
-function BasicInfo() {
+function BasicInfo({ theme }) {
   const [country, setCountry] = useState('Select Country');
   const [state, setState] = useState('Select State');
   const [editorState, setEditorState] = useState(() =>
@@ -59,13 +59,28 @@ function BasicInfo() {
   };
 
   return (
-    <div>
+    <div style={{ color: `${theme === 'dark' ? 'white' : 'black'}` }}>
       <div style={{ display: 'flex' }}>
-        <div style={{ width: '50%', display: 'flex' }}>
+        <div
+          style={{
+            width: '50%',
+            display: 'flex',
+            justifyContent: 'space-evenly',
+          }}
+        >
           Match:
-          <Input placeholder="Enter Match Title" />
+          <Input
+            style={{
+              padding: '0 5px',
+              border: '1px solid grey',
+              borderRadius: '10px',
+              outline: 'none',
+              color: 'black',
+            }}
+            placeholder="Enter Match Title"
+          />
         </div>
-        <div>
+        <div style={{ color: 'black' }}>
           <Button onClick={onSaveHandler}>Save</Button>
           <Button onClick={onPreviewHandler}>Preview</Button>
         </div>
@@ -123,7 +138,7 @@ function BasicInfo() {
         </div>
       </div>
 
-      <div style={{ padding: '10px', margin: '20px' }}>
+      <div style={{ padding: '10px', margin: '20px', color: 'black' }}>
         <div>
           <UncontrolledDropdown>
             <DropdownToggle
@@ -180,7 +195,7 @@ function BasicInfo() {
         />
       </div>
 
-      <div>
+      <div style={{ color: 'black' }}>
         <Button
           style={{ position: 'relative', right: '20px', margin: '10px' }}
           onClick={backHandler}

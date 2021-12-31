@@ -20,6 +20,7 @@ import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft';
 import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
 import Collapse from '@mui/material/Collapse';
 import ContentArea from './ContentArea.jsx';
+import BasicInfo from './basicinfo.js';
 
 const menudata = [
   'Gamer',
@@ -38,13 +39,13 @@ const steps = [
 export default function App() {
   const [ddState, setDDState] = useState('Gamer');
   const [secSDcss, setsecSDcss] = useState(['sec-sidebar hide-sec', 'emp']);
-  const [theme, setTheme] = useState('dark');
+  const [theme, setTheme] = useState('light');
   const [SDsize, setSDsize] = useState('long');
   const [subKey, setsubKey] = useState([-1, false]);
   const [secDataState, setsecDataState] = useState(['level1', false]);
   const [ctwdT, setctwdT] = useState('');
   const [dataCTarea, setdataCTarea] = useState(['', '']);
-  const [rtState, setrtState] = useState([true, 'BGMI', 'step 0']);
+  const [rtState, setrtState] = useState([false, '', 'step -1']);
 
   useEffect(() => {
     let color = theme === 'light' ? 'white' : 'black';
@@ -161,6 +162,7 @@ export default function App() {
 
   const handleSecOptions = (level1, level2) => {
     setdataCTarea([level1, level2]);
+    setrtState([rtState[0], rtState[0], 'step 0']);
   };
 
   const rtStateChange = (val, game) => {
@@ -357,17 +359,26 @@ export default function App() {
           )}
       </div>
       <div className={`content-area content-wd-${ctwdT}`}>
-        {switch(rtState[2]){
-          
-        }}
-        <ContentArea
-          theme={theme}
-          profile={ddState}
-          priOpt={secSDcss[1]}
-          secOptl1={dataCTarea[0]}
-          secOptl2={dataCTarea[1]}
-          rtStateChange={rtStateChange}
-        />
+        {
+          {
+            'step 0': (
+              <ContentArea
+                theme={theme}
+                profile={ddState}
+                priOpt={secSDcss[1]}
+                secOptl1={dataCTarea[0]}
+                secOptl2={dataCTarea[1]}
+                rtStateChange={rtStateChange}
+              />
+            ),
+            'step 1': <BasicInfo theme={theme} />,
+            'step -1': (
+              <h1 style={{ color: `${theme === 'dark' ? 'white' : 'black'}` }}>
+                Work Under Process
+              </h1>
+            ),
+          }[rtState[2]]
+        }
       </div>
       {rtState[0] && (
         <div className={`right-sidebar right-sidebar-${theme}`}>
