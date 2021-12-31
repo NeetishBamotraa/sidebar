@@ -27,7 +27,7 @@ const DUMMY_DATA = {
 };
 
 // Note: here "DataListPages" can be changed to "BasicInfo" while adding to original project.
-function BasicInfo({ theme, stepSelect }) {
+function BasicInfo({ theme }) {
   const [country, setCountry] = useState('Select Country');
   const [state, setState] = useState('Select State');
   const [editorState, setEditorState] = useState(() =>
@@ -44,7 +44,6 @@ function BasicInfo({ theme, stepSelect }) {
 
   const nextHandler = () => {
     // code to next..
-    stepSelect('step 2');
   };
 
   const backHandler = () => {

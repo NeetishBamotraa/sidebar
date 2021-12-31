@@ -20,12 +20,7 @@ import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft';
 import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
 import Collapse from '@mui/material/Collapse';
 import ContentArea from './ContentArea.jsx';
-import BasicInfo from './components/basicinfo.js';
-import Schedule from './components/schedule.js';
-import Match from './components/Match.js';
-import EntryFee from './components/EntryFee.js';
-import PrizePool from './components/PrizePool.js';
-import PrizeDistributionSimple from './components/PrizeDistributionSimple.js';
+import BasicInfo from './basicinfo.js';
 
 const menudata = [
   'Gamer',
@@ -38,16 +33,7 @@ const menudata = [
 
 const steps = [
   ['step 1', 'Basic Info'],
-  ['step 2', 'Schedule'],
-  ['step 3', 'Match Details'],
-  ['step 4', 'Entry Fees'],
-  ['step 5', 'Prize Pool'],
-  ['step 6', 'Prize Distribution'],
-  ['step 7', 'Requirements'],
-  ['step 8', 'Add Rules'],
-  ['step 9', 'Point System'],
-  ['step 10', 'Add Umpires'],
-  ['step 11', 'Promote - Content, Social Media'],
+  ['step 2', 'Next Step'],
 ];
 
 export default function App() {
@@ -59,7 +45,7 @@ export default function App() {
   const [secDataState, setsecDataState] = useState(['level1', false]);
   const [ctwdT, setctwdT] = useState('');
   const [dataCTarea, setdataCTarea] = useState(['', '']);
-  const [rtState, setrtState] = useState([true, '', 'step 0']);
+  const [rtState, setrtState] = useState([false, '', 'step -1']);
 
   useEffect(() => {
     let color = theme === 'light' ? 'white' : 'black';
@@ -385,12 +371,7 @@ export default function App() {
                 rtStateChange={rtStateChange}
               />
             ),
-            'step 1': <BasicInfo theme={theme} stepSelect={stepSelect} />,
-            'step 2': <Schedule theme={theme} stepSelect={stepSelect}/>,
-            'step 3': <Match theme={theme} stepSelect={stepSelect}/>,
-            'step 4': <EntryFee theme={theme} stepSelect={stepSelect}/>,
-            'step 5': <PrizePool theme={theme} stepSelect={stepSelect}/>,
-            'step 6': <PrizeDistributionSimple theme={theme} stepSelect={stepSelect} />,
+            'step 1': <BasicInfo theme={theme} />,
             'step -1': (
               <h1 style={{ color: `${theme === 'dark' ? 'white' : 'black'}` }}>
                 Work Under Process

@@ -423,7 +423,6 @@
   height: 90vh;
   transition-duration: 0.5s;
   padding: 10px;
-  overflow: auto;
 }
 
 .content-wd-psl-sss {
@@ -578,21 +577,20 @@
   cursor: pointer;
 }
 
-.rt-sd-steps-ct {
+.rt-sd-steps-ct{
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-evenly;
 }
 
-.rt-sd-steps {
+.rt-sd-steps{
   cursor: pointer;
   margin-bottom: 5px;
 }
 
-.rt-active-step {
+.rt-active-step{
   background-color: blue;
   color: white;
   border-radius: 10px;
-  padding: 0 5px;
+  padding:0 5px;
 }
