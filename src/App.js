@@ -37,7 +37,7 @@ const menudata = [
   'Organizer',
   'Team Owner',
   'Content creator',
-  'Buyer & Seller',
+  'Buyer && Seller',
   'Service Provider',
 ];
 
