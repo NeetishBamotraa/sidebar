@@ -1,0 +1,80 @@
+.bonusPoint__title {
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+.bonusPoint__cardsSection {
+  box-shadow: 0px 2px 13px 0px rgba(127, 124, 124, 0.49);
+  padding: 0 20px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  height: 120px;
+}
+
+.bonusPoint__cards {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.bonusPoint__cardsBottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 25px;
+}
+
+.bonusPoint__cardName {
+  margin-left: 25px;
+  margin-right: 10px;
+  padding-top: 10px;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.bonusPoint__cardDivider {
+  height: 60px;
+  border-right: 2px solid lightslategray;
+}
+
+.bonusPoint__vertical {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bonusPoint__inputSection {
+  display: flex;
+  align-items: center;
+}
+
+.bonusPoint__inputPointointVertical,
+.bonusPoint__pointNumbers,
+.bonusPoint__bonusPointNumbers {
+  width: 150px;
+  height: 30px;
+  margin: 0 10px;
+}
+
+.bonusPoint__inputSection > p {
+  padding-top: 10px;
+}
+
+.bonus__subTitle {
+  font-weight: 450;
+}
+
+.bonusPoint__combine {
+  display: flex;
+}
+
+.bonusPoint__single {
+  font-size: 18px;
+  font-weight: 500;
+  border: 1px solid lightgrey;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 15px;
+  margin-right: 10px;
+}
