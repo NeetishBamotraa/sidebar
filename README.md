@@ -1,3 +1,3 @@
-# sidebar
+# react-hcswm8
 
-[Edit on StackBlitz ⚡️](https://stackblitz.com/edit/react-xwdrbh)
+[Edit on StackBlitz ⚡️](https://stackblitz.com/edit/react-hcswm8)
